@@ -11,7 +11,13 @@ ruleset notification {
 	}
 	rule notify is active {
 		select when pageview ".*" setting()
-		{notify("This is a notification.", "Now you know!") with sticky = true;
+		{ notify("This is a notification.", "Now you know!") with sticky = true;
 		notify("Hey look!", "Another notification!") with sticky = true and color = "#CC9";}
+	}
+	rule notify2 is active {
+		select when pageview ".*" setting()
+		notify("Hello", page:url("query")) with sticky = true;
+		//notify("Hello", /*page:url("query")*/ );
+
 	}
 }
