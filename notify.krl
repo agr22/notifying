@@ -4,10 +4,10 @@ ruleset notification {
 		name "notifying"
 		author "Ashlee"
 		logging off
-		//use module a421x47 alias SauceLabs
+		use module a421x47 alias SauceLabs
 	}
 	dispatch {
-		domain ktest.heroku.com
+		domain "http://ktest.heroku.com"
 	}
 	rule notify is active {
 		select when pageview ".*" setting()
