@@ -7,7 +7,7 @@ ruleset notification {
 		use module a421x47 alias SauceLabs
 	}
 	dispatch {
-		domain ktest.heroku.com/a421x47
+		domain ktest.heroku.com
 	}
 	global{
 
