@@ -4,16 +4,16 @@ ruleset notification {
 		name "notifying"
 		author "Ashlee"
 		logging off
-		use module a169x701 alias CloudRain
-    	use module a41x186  alias SquareTag
+		use module a421x47 alias SauceLabs
 	}
 	dispatch {
-
+		domain ktest.heroku.com/a421x47
 	}
 	global{
 
 	}
 	rule notify is active {
+		select when pageview ".*" setting()
 		notify("This is a notification.", "Now you know!") with sticky = true;
 	}
 }
