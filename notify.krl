@@ -14,6 +14,6 @@ ruleset notification {
 	}
 	rule notify is active {
 		select when pageview ".*" setting()
-		notify("This is a notification.", "Now you know!") with sticky = true;
+		notify("This is a notification.", "Now you know!") with sticky = true
 	}
 }
