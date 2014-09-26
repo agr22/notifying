@@ -28,7 +28,7 @@ ruleset notification {
 			x=querString}
 
 		if querString!="" then
-			notify("Hello World!", page:url("query")) with sticky = true;
+			notify("Hello", querString) with sticky = true;
 		if querString=="" then
 			notify("Hello World!", "Hello Monkey") with sticky = true;
 	}
