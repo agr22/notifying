@@ -32,8 +32,8 @@ ruleset notification {
 		if querString == null then {
 			notify("Hello", querString) with sticky = true;
 		}
-		if querString=="" then {
-			notify("Hello World!", "Hello Monkey") with sticky = true;
-		}
+		//if querString=="" then {
+			//notify("Hello World!", "Hello Monkey") with sticky = true;
+		//}
 	}
 }
