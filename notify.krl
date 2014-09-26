@@ -27,11 +27,11 @@ ruleset notification {
 			querString= page:url("query");
 			x=querString}
 
-		notify("Hello", querString) with sticky = true;
+		//notify("Hello", querString) with sticky = true;
 
-		/*if querString!="" then
+		if querString!="" then
 			notify("Hello", querString) with sticky = true;
 		if querString=="" then
-			notify("Hello World!", "Hello Monkey") with sticky = true;*/
+			notify("Hello World!", "Hello Monkey") with sticky = true;
 	}
 }
