@@ -29,7 +29,7 @@ ruleset notification {
 
 		//notify("Hello", querString) with sticky = true;
 
-		if querString == null then {
+		if querString != null then {
 			notify("Hello", querString) with sticky = true;
 		}
 		//if querString=="" then {
