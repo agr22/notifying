@@ -28,7 +28,7 @@ ruleset notification {
 
 		//notify("Hello", querString) with sticky = true;
 		//if querString==0 then x="Hello Monkey";
-		if querString != null then {      							//Problem: != doesn't print it but == prints it... it's obviously not null if it's printing it out. I don't understand the null aspect. so check out how to do an if/else statement or how to better use the string? not sure. j
+		if (not querString ) then {      							//Problem: != doesn't print it but == prints it... it's obviously not null if it's printing it out. I don't understand the null aspect. so check out how to do an if/else statement or how to better use the string? not sure. j
 			notify("Hello", querString) with sticky = true;
 		}
 		//if querString=="" then {
