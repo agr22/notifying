@@ -23,13 +23,12 @@ ruleset notification {
 		//if querString: 0 then x="Hello Monkey"
 		//notify("Hello", x) with sticky = true;
 		//notify("Hello", /*page:url("query")*/ );
-		pre {x=1;
-			querString= page:url("query");
+		pre { querString= page:url("query");
 			x=querString}
 
 		//notify("Hello", querString) with sticky = true;
-
-		if querString != null then {
+		//if querString==0 then x="Hello Monkey";
+		if querString != null then {      							//Problem: != doesn't print it but == prints it... it's obviously not null if it's printing it out. I don't understand the null aspect. so check out how to do an if/else statement or how to better use the string? not sure. j
 			notify("Hello", querString) with sticky = true;
 		}
 		//if querString=="" then {
