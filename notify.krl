@@ -20,19 +20,16 @@ ruleset notification {
 	rule notify2 is active {
 		select when pageview ".*" setting()
 		
-		//if querString: 0 then x="Hello Monkey"
-		//notify("Hello", x) with sticky = true;
-		//notify("Hello", /*page:url("query")*/ );
 		pre { querString= page:url("query");
 			x=querString}
 
-		//notify("Hello", querString) with sticky = true;
 		//if querString==0 then x="Hello Monkey";
-		if (querString ) then {      							//Problem: != doesn't print it but == prints it... it's obviously not null if it's printing it out. I don't understand the null aspect. so check out how to do an if/else statement or how to better use the string? not sure. j
+		if (querString) then {      							//Problem: != doesn't print it but == prints it... it's obviously not null if it's printing it out. I don't understand the null aspect. so check out how to do an if/else statement or how to better use the string? not sure. j
 			notify("Hello", querString) with sticky = true;
 		}
-		//if querString=="" then {
-			//notify("Hello World!", "Hello Monkey") with sticky = true;
-		//}
+
+		if (not querString) then {
+			notify("Hello World!", "Hello Monkey") with sticky = true;
+		}
 	}
 }
