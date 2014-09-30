@@ -21,8 +21,9 @@ ruleset notification {
 		select when pageview ".*" setting()
 		
 		pre { querString= page:url("query");
-			print_Out = (querString == "") => querString | "Monkey" ;
+			print_Out = (querString.match("")) => querString | "Monkey" ;
 		}
+
 
 		{ notify("Hello", print_Out) with sticky = true; }
 		/*if (not querString) then {
