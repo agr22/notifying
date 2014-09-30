@@ -24,7 +24,7 @@ ruleset notification {
 			print_Out = (3>4) => querString | "Monkey" ;
 		}
 
-		notify("Hello", printOut) with sticky = true;
+		notify("Hello", "hello") with sticky = true;
 		/*if (not querString) then {
 			x = ""; //use ch 7 more. still figuring this out.... figure out what "fired" means
 		}
