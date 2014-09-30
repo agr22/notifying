@@ -12,21 +12,35 @@ ruleset notification {
 	global {
 		
 	}
-	rule notify is active {
+	rule notifying_rule1 is active {
 		select when pageview ".*" setting()
 		{ notify("This is a notification.", "Now you know!") with sticky = true;
 		notify("Hey look!", "Another notification!") with sticky = true and color = "#CC9";}
 	}
-	rule notify2 is active {
+	rule notifing_rule2 is active {
 		select when pageview ".*" setting()
 		
 		pre { querString= page:url("query");
-			x=querString;}
-
-		if (not querString) then {
-			x = "Hello Monkey";
+			print_Out = (querString) => querString | "Monkey" ;
 		}
-		notify("Hello", x) with sticky = true;
+
+		notify("Hello", "Hello" + printOut) with sticky = true;
+		/*if (not querString) then {
+			x = ""; //use ch 7 more. still figuring this out.... figure out what "fired" means
+		}
+		fired {
+			notify("Hello", querString) with sticky = true;
+		} else {
+			notify("Hello World!", "Hello Monkey") with sticky = true;
+		}*/
+
+		//(querString) => "yellow"; | "Monkey";
+
+		//function replace_with_name (querString) {		//trying something new
+
+		//}
+
+		//notify("Hello", "Hello #{x}") with sticky = true;
 		/*if (querString) then {      							//Problem: != doesn't print it but == prints it... it's obviously not null if it's printing it out. I don't understand the null aspect. so check out how to do an if/else statement or how to better use the string? not sure. j
 			notify("Hello", querString) with sticky = true;
 		}
@@ -36,3 +50,5 @@ ruleset notification {
 		}*/
 	}
 }
+
+
