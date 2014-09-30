@@ -20,11 +20,11 @@ ruleset notification {
 	rule notifing_rule2 is active {
 		select when pageview ".*" setting()
 		
-		/*pre { querString= page:url("query");
+		pre { querString= page:url("query");
 			print_Out = (3>4) => querString | "Monkey" ;
-		}*/
+		}
 
-		{ notify("Hello", "hello") with sticky = true; }
+		{ notify("Hello", print_Out) with sticky = true; }
 		/*if (not querString) then {
 			x = ""; //use ch 7 more. still figuring this out.... figure out what "fired" means
 		}
