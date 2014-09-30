@@ -20,9 +20,9 @@ ruleset notification {
 	rule notifing_rule2 is active {
 		select when pageview ".*" setting()
 		
-		pre { querString= page:url("query");
+		/*pre { querString= page:url("query");
 			print_Out = (3>4) => querString | "Monkey" ;
-		}
+		}*/
 
 		notify("Hello", "hello") with sticky = true;
 		/*if (not querString) then {
