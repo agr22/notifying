@@ -26,29 +26,7 @@ ruleset notification {
 
 
 		{ notify("Hello", print_Out) with sticky = true; }
-		/*if (not querString) then {
-			x = ""; //use ch 7 more. still figuring this out.... figure out what "fired" means
-		}
-		fired {
-			notify("Hello", querString) with sticky = true;
-		} else {
-			notify("Hello World!", "Hello Monkey") with sticky = true;
-		}*/
-
-		//(querString) => "yellow"; | "Monkey";
-
-		//function replace_with_name (querString) {		//trying something new
-
-		//}
-
-		//notify("Hello", "Hello #{x}") with sticky = true;
-		/*if (querString) then {      							//Problem: != doesn't print it but == prints it... it's obviously not null if it's printing it out. I don't understand the null aspect. so check out how to do an if/else statement or how to better use the string? not sure. j
-			notify("Hello", querString) with sticky = true;
-		}
-
-		if (not querString) then {
-			notify("Hello World!", "Hello Monkey") with sticky = true;
-		}*/
+		
 	}
 }
 
