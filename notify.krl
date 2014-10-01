@@ -3,7 +3,7 @@ ruleset notification {
 	meta {
 		name "notifying"
 		author "Ashlee"
-		logging off
+		logging on
 		//use module a421x47 alias SauceLabs
 	}
 	dispatch {
@@ -19,14 +19,20 @@ ruleset notification {
 	}
 	rule notifing_rule2 is active {
 		select when pageview ".*" setting()
-		
 		pre { querString= page:url("query");
-			print_Out = (querString.match("")) => querString | "Monkey" ;
+			name = querString.extract(re/name (\w+)/);
+			print_Out = (querString.match("")) => name | "Monkey" ; //must be declared in pre
+			//print_Out = "";
 		}
 
-
-		{ notify("Hello", print_Out) with sticky = true; }
+		/*if (querString.match("")) then
+		fired {
+			print_Out = querString;
+		} else {
+			print_Out = "Monkey";
+		}*/
 		
+		{ notify("Hello", "Hello" + print_Out) with sticky = true; }
 	}
 }
 
