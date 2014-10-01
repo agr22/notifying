@@ -21,7 +21,7 @@ ruleset notification {
 		select when pageview ".*" setting()
 		pre { querString= page:url("query");
 			name = querString.extract(re#name= (\w+)#);					//	([^&]*)/);
-			print_Out = (querString neq "") => name[0] | "Monkey" ; //must be declared in pre	
+			print_Out = (querString neq "") => querString | "Monkey" ; //must be declared in pre	
 			//print_Out = "";
 		}
 
