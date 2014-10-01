@@ -20,8 +20,8 @@ ruleset notification {
 	rule notifing_rule2 is active {
 		select when pageview ".*" setting()
 		pre { querString= page:url("query");
-			name = querString.extract(re#name= (\w+)#);					//	([^&]*)/);
-			print_Out = (querString neq "") => querString | "Monkey" ; //must be declared in pre	
+			name = querString.extract(re#name= (i\w)#);								//	([^&]*)/);
+			print_Out = (querString neq "") => querString | "Monkey" ; //must be declared in pre	//(\w+)#);
 			//print_Out = "";
 		}
 
