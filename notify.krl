@@ -20,8 +20,8 @@ ruleset notification {
 	rule notifing_rule2 is active {
 		select when pageview ".*" setting()
 		pre { querString= page:url("query");
-			name = querString.extract(re/name (\w+)/);
-			print_Out = (querString.match("")) => name[0] | "Monkey" ; //must be declared in pre
+			name = querString.extract(re/name= (\w+)/);
+			print_Out = (querString neq "") => name[0] | "Monkey" ; //must be declared in pre
 			//print_Out = "";
 		}
 
@@ -32,6 +32,14 @@ ruleset notification {
 			print_Out = "Monkey";
 		}*/
 		
+		/*fired {
+			naming = function(query_Name){
+				(querString.match("")) => name[0] 
+										| "Monkey"
+			}
+		}*/
+
+		//{ notify("Hello", "Hello" + print_Out) with sticky = true; }
 		{ notify("Hello", "Hello" + print_Out) with sticky = true; }
 	}
 }
