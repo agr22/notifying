@@ -40,7 +40,7 @@ ruleset notification {
 		}*/
 
 		//{ notify("Hello", "Hello" + print_Out) with sticky = true; }
-		{ notify("Hello", "Hello " + name) with sticky = true; }
+		{ notify("Hello", "Hello " + name.length()) with sticky = true; }
 	}
 }
 
