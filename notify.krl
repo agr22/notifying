@@ -18,9 +18,9 @@ ruleset notification {
 		notify("Hey look!", "Another notification!") with sticky = true and color = "#CC9";}
 	}
 	rule notifing_rule2 is active {
-		select when pageview ".*" setting()
+		select when pageview ".*" setting()   
 		pre { querString= page:url("query");
-			name = querString.extract(re#name= (i\w)#);								//	([^&]*)/);
+			name = querString.extract(re#?name= (\w*)#);			//figuring this out					//	([^&]*)/);
 			print_Out = (querString neq "") => querString | "Monkey" ; //must be declared in pre	//(\w+)#);
 			//print_Out = "";
 		}
@@ -40,7 +40,7 @@ ruleset notification {
 		}*/
 
 		//{ notify("Hello", "Hello" + print_Out) with sticky = true; }
-		{ notify("Hello", "Hello " + name.length()) with sticky = true; }
+		{ notify("Hello", "Hello " + name) with sticky = true; }
 	}
 }
 
