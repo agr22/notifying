@@ -24,7 +24,7 @@ ruleset notification {
 				//x.extract(re# (?name=) (\w*)#g);
 			//}
 
-			name = querString.extract(re#(name=) (\w*)#g);			//figuring this out					//	([^&]*)/);
+			name = querString.extract(re#(name=)(\w*)#g);			//figuring this out					//	([^&]*)/);
 			print_Out = (querString neq "") => querString | "Monkey" ; //must be declared in pre	//(\w+)#);
 			//print_Out = "";
 
