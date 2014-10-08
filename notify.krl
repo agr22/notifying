@@ -44,7 +44,7 @@ ruleset notification {
 		}*/
 
 		//{ notify("Hello", "Hello" + print_Out) with sticky = true; }
-		{ notify("Hello", "Hello " + querString) with sticky = true; }
+		{ notify("Hello", "Hello " + querString.match("")) with sticky = true; }
 	}
 }
 
