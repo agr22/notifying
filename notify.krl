@@ -19,22 +19,21 @@ ruleset notification {
 	}
 	rule notifing_rule2 is active {
 		select when pageview ".*" setting()   
-		pre { querString= page:url("query");
-			//getName = function (x) {
-				//x.extract(re# (?name=) (\w*)#g);
-			//}
-
-			name = querString.extract(re#(name=)(\w*)#g);			//figuring this out					//	([^&]*)/);
-			print_Out = (querString neq "") => querString | "Monkey" ; //must be declared in pre	//(\w+)#);
+		pre { 
+			querString= page:url("query");
+			getName = function (x) { 
+				x.extract(re#(name=)(\w*)#g)
+			};
+			name = getName(querString);//name = querString.extract(re#(name=)(\w*)#g); //getName(querString);
+			//name = querString.extract(re#(name=)(\w*)#g);			
+			print_Out = (name neq "") => name[1] | "Monkey" ; 
 			//print_Out = "";
-
 		}
 
-		/*if (querString.match("")) then
-		fired {
-			print_Out = querString;
+		/*fired {
+			notify("Hello", "Hello " + name[1]) with sticky = true;
 		} else {
-			print_Out = "Monkey";
+			notify("Hello", "Hello Monkey") with sticky = true;
 		}*/
 		
 		/*fired {
@@ -45,7 +44,7 @@ ruleset notification {
 		}*/
 
 		//{ notify("Hello", "Hello" + print_Out) with sticky = true; }
-		{ notify("Hello", "Hello " + name[1]) with sticky = true; }
+		{ notify("Hello", "Hello " + print_Out) with sticky = true; }
 	}
 }
 
