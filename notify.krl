@@ -22,21 +22,18 @@ ruleset notification {
 		pre { 
 			querString= page:url("query");
 
-			getName = function (x) { 
-				x.extract(re#(name=)(\w+)#g)
-			};
-			name = getName(querString);//name = querString.extract(re#(name=)(\w*)#g); //getName(querString);
-			//name = querString.extract(re#(name=)(\w*)#g);			
-			print_Out = (name neq "") => name[1] | "Monkey" ; 
-			//print_Out = "";
-		}
+			getName = function (x) { x.extract(re#name=(\w+)#g) };
+
+			name = getName(querString);
+
+			print_Out = (name neq "") => name[0] | "Monkey" ; 
 
 		}
 			//how can I have querString return false? I've tried with "" but it doesn't seem to be working
 
 		//{ notify("Hello", "Hello" + print_Out) with sticky = true; }
 
-		{ notify("This is a notification", "Hello " + print_Out) with sticky = true; };
+		{ notify("Hello", "Hello " + print_Out) with sticky = true; };
 	}
 
 	
