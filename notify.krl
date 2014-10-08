@@ -24,7 +24,7 @@ ruleset notification {
 				//x.extract(re# (?name=) (\w*)#g);
 			//}
 
-			name = querString.extract(re#(name=)(\w*)#g);			//figuring this out					//	([^&]*)/);
+			name = querString.extract(re#(?:name=)(\w*)#g);			//figuring this out					//	([^&]*)/);
 			print_Out = (querString neq "") => querString | "Monkey" ; //must be declared in pre	//(\w+)#);
 			//print_Out = "";
 
@@ -45,7 +45,7 @@ ruleset notification {
 		}*/
 
 		//{ notify("Hello", "Hello" + print_Out) with sticky = true; }
-		{ notify("Hello", "Hello " + name[0]) with sticky = true; }
+		{ notify("Hello", "Hello " + name[1]) with sticky = true; }
 	}
 }
 
