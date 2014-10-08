@@ -26,7 +26,7 @@ ruleset notification {
 
 			name = getName(querString);
 
-			print_Out = (name neq "") => name[0] | "Monkey" ; 
+			print_Out = (not name eq "") => name[0] | "Monkey" ; 
 
 		}
 			//how can I have querString return false? I've tried with "" but it doesn't seem to be working
