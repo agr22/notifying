@@ -22,7 +22,7 @@ ruleset notification {
 		pre { 
 			querString= page:url("query");
 			getName = function (x) { 
-				x.extract(re#(name=)(\w*)#g)
+				x.extract(re#(name=)(\w+)#g)
 			};
 			name = getName(querString);//name = querString.extract(re#(name=)(\w*)#g); //getName(querString);
 			//name = querString.extract(re#(name=)(\w*)#g);			
