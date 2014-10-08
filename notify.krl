@@ -21,30 +21,20 @@ ruleset notification {
 		select when pageview ".*" setting()   
 		pre { 
 			querString= page:url("query");
+
 			getName = function (x) { 
 				x.extract(re#name=(\w+)#g)
 			};
-			name = getName(querString);//name = querString.extract(re#(name=)(\w*)#g); //getName(querString);
-			//name = querString.extract(re#(name=)(\w*)#g);			
-			print_Out = (name neq "") => name[0] | "Monkey" ; 
-			//print_Out = "";
-		}
 
-		/*fired {
-			notify("Hello", "Hello " + name[1]) with sticky = true;
-		} else {
-			notify("Hello", "Hello Monkey") with sticky = true;
-		}*/
-		
-		/*fired {
-			naming = function(query_Name){
-				(querString.match("")) => name[0] 
-										| "Monkey"
-			}
-		}*/
+			name = getName(querString);
+
+			print_Out = (name.match("")) => name[0] | "Monkey" ; 
+
+		}
+			//how can I have querString return false? I've tried with "" but it doesn't seem to be working
 
 		//{ notify("Hello", "Hello" + print_Out) with sticky = true; }
-		{ notify("Hello", "Hello " + querString) with sticky = true; }
+		{ notify("Hello", "Hello " + print_Out) with sticky = true; }
 	}
 }
 
