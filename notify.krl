@@ -24,14 +24,12 @@ ruleset notification {
 
 			getName = function (x) { x.extract(re#name=(\w+)#g) };
 
-			name = getName(querString);
+			name = (querString neq "") => getName(querString) | "Monkey" ;
 
-			print_Out = (not name eq "") => name[0] | "Monkey" ; 
+			print_Out = name[0];		//(name neq "") => name[0] | "Monkey" ; 
 
 		}
 			//how can I have querString return false? I've tried with "" but it doesn't seem to be working
-
-		//{ notify("Hello", "Hello" + print_Out) with sticky = true; }
 
 		{ notify("Hello", "Hello " + print_Out) with sticky = true; };
 	}
