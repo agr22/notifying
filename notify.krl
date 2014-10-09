@@ -24,9 +24,9 @@ ruleset notification {
 
 			getName = function (x) { x.extract(re#name=(\w+)#g) };
 
-			name = (querString neq "") => getName(querString) | "Monkey" ;
+			name = (querString neq "") => getName(querString) | ""; 		//I believe it doesn't come back false because it may not go past getName function if there's nothing in the string
 
-			print_Out = name[0];		//(name neq "") => name[0] | "Monkey" ; 
+			print_Out = (name neq "") => name[0] | "Monkey" ; 
 
 		}
 			//how can I have querString return false? I've tried with "" but it doesn't seem to be working
