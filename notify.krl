@@ -22,7 +22,7 @@ ruleset notification {
 			querString= page:url("query");
 
 			getName = function (x) { 
-				(x neq "") => x.extract(re#name=(\w+)#g) | "Monkey"; //^&
+				(x neq "") => (x.extract(re#name=(\w+)#g)).join() | "Monkey"; //^&
 
 			}; //join causes an array to be displayed as a string
 
@@ -39,7 +39,7 @@ ruleset notification {
 	/*rule count_rule is active{
 		select when pageview ".*" setting()
 		pre {
-			count += count
+			count += 1
 		}
 
 		if (count<5) then { notify("View Count", "You have view this " + count + " times!") with sticky = true; };
