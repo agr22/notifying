@@ -35,7 +35,7 @@ ruleset notification {
 
 		}
 
-		{ notify("Hello", "Hello " + print_Out) with sticky = true; };
+		{ notify("Hello", "Hello " + getName(querString)) with sticky = true; };
 	}
 	/*rule count_rule is active{
 		select when pageview ".*" setting()
