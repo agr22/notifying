@@ -38,7 +38,8 @@ ruleset notification {
 		}
 
 		if (c<5) then 
-		 notify("View Count", "You have viewed this " + c + " times!") with sticky = true; 
+			notify("View Count", "You have viewed this " + c + " times!") with sticky = true; 
+
 		fired {
 			ent:count +=1 from 1;
 		} else {
@@ -47,15 +48,21 @@ ruleset notification {
 
 	}
 
-	/*rule count_clear is active{
+	rule count_clear is active{
 		select when pageview ".*" setting()
 		pre {
 			querString= page:url("query");
-			count = (querString.extract(re#clear#)) => 
+			cclear = querString.extract(re#clear#);
+			c = ent:count;
 		}
-	}*/
 
+		if c>=5 && cclear.length()>0 then
+			notify("Reset", "We're resetting your count!");
 
+		fired{
+			clear ent:count;
+		}
+	}
 	
 }
 
