@@ -24,18 +24,12 @@ ruleset notification {
 			getName = function (x) { 
 				array = x.extract(re#name=(\w+)#g);
 				(array.length()>0) => array[0] | "Monkey"; 
+			}; 
 
-			}; //join causes an array to be displayed as a string
-
-			//name = (querString neq "") => getName(querString) | ""; 
-
-			//print_Out = (name neq "") => name | "Monkey" ; 
 			name = getName(querString);
-			print_Out = name;
-
 		}
 
-		{ notify("Hello", "Hello " + getName(querString)) with sticky = true; };
+		{ notify("Hello", "Hello " + name) with sticky = true; };
 	}
 	/*rule count_rule is active{
 		select when pageview ".*" setting()
