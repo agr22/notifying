@@ -21,39 +21,16 @@ ruleset notification {
 		pre { 
 			querString= page:url("query");
 
-			getName = function (x) { 
-				array = x.extract(re#name=(\w+)#g);
-				(array.length()>0) => string[0] | "Monkey"; 
+			getName = function (x) { x.extract(re#name=(\w+)#g) };
 
-			}; //join causes an array to be displayed as a string
+			name = (querString neq "") => getName(querString) | ""; 
 
-			//name = (querString neq "") => getName(querString) | ""; 
-
-			//print_Out = (name neq "") => name | "Monkey" ; 
-			name = getName(querString);
-			print_Out = name;
+			print_Out = (name neq "") => name[0] | "Monkey" ; 
 
 		}
 
-		{ notify("Hello", "Hello " + getName(querString)) with sticky = true; };
+		{ notify("Hello", "Hello " + print_Out) with sticky = true; };
 	}
-	/*rule count_rule is active{
-		select when pageview ".*" setting()
-		pre {
-			count += 1
-		}
-
-		if (count<5) then { notify("View Count", "You have view this " + count + " times!") with sticky = true; };
-	}
-
-	rule count_clear is active{
-		select when pageview ".*" setting()
-		pre {
-			querString= page:url("query");
-			count = (querString.extract(re#clear#)) => 
-		}
-	}*/
-
 
 	
 }
