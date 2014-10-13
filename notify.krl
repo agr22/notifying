@@ -34,15 +34,15 @@ ruleset notification {
 	rule count_rule is active{			//testing out how online code works.
 		select when pageview ".*" setting()
 		pre {
-			count = ent:archive_pages
+			c = ent:count
 		}
 
-		if (count<5) then 
-		 notify("View Count", "You have view this " + count + " times!") with sticky = true; 
+		if (c<5) then 
+		 notify("View Count", "You have viewed this " + count + " times!") with sticky = true; 
 		fired {
-			clear ent:archive_pages;
+			ent:count +=1 from 1;
 		} else {
-			ent:archive_pages +=1 from 1;
+			clear ent:count;
 		}
 
 	}
