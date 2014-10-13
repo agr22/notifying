@@ -50,7 +50,7 @@ ruleset notification {
 		select when pageview ".*" setting()
 		pre {
 			querString= page:url("query");
-			//cclear = querString.extract(re#clear#);
+			cclear = querString.extract(re#(clear)#);
 			c = ent:count;
 		}
 
