@@ -4,7 +4,6 @@ ruleset notification {
 		name "notifying"
 		author "Ashlee"
 		logging on
-		//use module a421x47 alias SauceLabs
 	}
 	dispatch {
 		domain "http://ktest.heroku.com"
@@ -24,12 +23,11 @@ ruleset notification {
 
 			getName = function (x) { x.extract(re#name=(\w+)#g) };
 
-			name = (querString neq "") => getName(querString) | ""; 		//I believe it doesn't come back false because it may not go past getName function if there's nothing in the string
+			name = (querString neq "") => getName(querString) | ""; 
 
 			print_Out = (name neq "") => name[0] | "Monkey" ; 
 
 		}
-			//how can I have querString return false? I've tried with "" but it doesn't seem to be working
 
 		{ notify("Hello", "Hello " + print_Out) with sticky = true; };
 	}
