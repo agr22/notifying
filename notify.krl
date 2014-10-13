@@ -37,11 +37,11 @@ ruleset notification {
 			c = ent:count
 		}
 
-		if (c<5) then 
+		if (c<=5) then 
 			notify("View Count", "You have viewed this " + c + " times!") with sticky = true; 
 
 		fired {
-			ent:count +=1 from 1;
+			ent:count +=1 from 0;
 		} 
 
 	}
@@ -54,7 +54,7 @@ ruleset notification {
 			c = ent:count;
 		}
 
-		if c>=5 && cclear.length()>0 then
+		if c>5 && cclear.length()>0 then
 			notify("Reset", "We're resetting your count!") with sticky = true;
 
 		fired{
