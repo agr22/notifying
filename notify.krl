@@ -23,7 +23,7 @@ ruleset notification {
 
 			getName = function (x) { 
 				array = x.extract(re#name=(\w+)#g);
-				(array.length()>0) => array[0] | "Monkey"; 
+				(array.length()>0) => array.join() | "Monkey"; 
 
 			}; //join causes an array to be displayed as a string
 
