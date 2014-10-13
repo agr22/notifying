@@ -30,7 +30,7 @@ ruleset notification {
 
 			//print_Out = (name neq "") => name | "Monkey" ; 
 			name = getName(querString);
-			print_Out = name[0];
+			print_Out = name;
 
 		}
 
