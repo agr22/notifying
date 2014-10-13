@@ -31,16 +31,23 @@ ruleset notification {
 
 		{ notify("Hello", "Hello " + name) with sticky = true; };
 	}
-	/*rule count_rule is active{
+	rule count_rule is active{			//testing out how online code works.
 		select when pageview ".*" setting()
 		pre {
-			count += 1
+			count = ent:archive_pages
 		}
 
-		if (count<5) then { notify("View Count", "You have view this " + count + " times!") with sticky = true; };
+		if (count<5) then 
+		 notify("View Count", "You have view this " + count + " times!") with sticky = true; 
+		fired {
+			clear ent:archive_pages;
+		} else {
+			ent:archive_pages +=1 from 1;
+		}
+
 	}
 
-	rule count_clear is active{
+	/*rule count_clear is active{
 		select when pageview ".*" setting()
 		pre {
 			querString= page:url("query");
