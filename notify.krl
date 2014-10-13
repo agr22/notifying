@@ -22,7 +22,8 @@ ruleset notification {
 			querString= page:url("query");
 
 			getName = function (x) { 
-				(x neq "") => (x.extract(re#name=(\w*)#g)).join() | "Monkey"; //^&
+				string = (x.extract(re#name=(\w*)#g)).join()
+				(string neq "") => string | "Monkey"; 
 
 			}; //join causes an array to be displayed as a string
 
