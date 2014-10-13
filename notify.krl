@@ -38,7 +38,7 @@ ruleset notification {
 		}
 
 		if (c<5) then 
-		 notify("View Count", "You have viewed this " + count + " times!") with sticky = true; 
+		 notify("View Count", "You have viewed this " + c + " times!") with sticky = true; 
 		fired {
 			ent:count +=1 from 1;
 		} else {
