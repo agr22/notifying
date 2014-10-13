@@ -57,7 +57,7 @@ ruleset notification {
 		}
 
 		if c>=5 && cclear.length()>0 then
-			notify("Reset", "We're resetting your count!");
+			notify("Reset", "We're resetting your count!") with sticky = true;
 
 		fired{
 			clear ent:count;
