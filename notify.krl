@@ -42,9 +42,7 @@ ruleset notification {
 
 		fired {
 			ent:count +=1 from 1;
-		} else {
-			clear ent:count;
-		}
+		} 
 
 	}
 
