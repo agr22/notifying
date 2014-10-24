@@ -22,7 +22,7 @@ ruleset chapter_Seven {
 				</div>
 			>>;
 		}
-		notify("Showing the Paragraph", my_div) with sticky=true;
+		notify("Showing the Paragraph", add_paragraph) with sticky=true;
 
 	}
 
