@@ -16,11 +16,11 @@ ruleset chapter_Seven {
 		select when pageview ".*" setting()
 		
 		pre {
-			add_paragraph = <<
+			/*add_paragraph = <<
 				<div id="my_div">
 					<p>Hey this is a paragraph</p>
 				</div>
-			>>;
+			>>;*/
 
 			a_form = <<
 				<form id="my_form" onsubmit="return false">
@@ -33,11 +33,11 @@ ruleset chapter_Seven {
 		}
 		
 		if(not ent:first) then {
-			append("#my_div", a_form);
+			append("#main", a_form);
 			watch("#my_form", "submit");
 		}
 
-		notify("Showing the Paragraph", add_paragraph) with sticky=true;
+		//notify("Showing the Paragraph", add_paragraph) with sticky=true;
 		
 		/*fired {
 			last;
