@@ -1,7 +1,7 @@
-
-ruleset notification {
+//b506537x4.prod
+ruleset chapter_Seven {
 	meta {
-		name "notifying"
+		name "Chapter Seven Exercises"
 		author "Ashlee"
 		logging on
 	}
@@ -12,16 +12,17 @@ ruleset notification {
 		
 	}
 	
-	rule show_form is active{			//testing out how online code works.
+	rule show_form {			
 		select when pageview ".*" setting()
 		
 		pre {
 			add_paragraph = <<
-				<div>
-					<p>"Hey this is a paragraph"</p>
+				<div id="my_div">
+					<p>Hey this is a paragraph</p>
 				</div>
 			>>;
 		}
+		notify("Showing the Paragraph", my_div) with sticky=true;
 
 	}
 
