@@ -33,16 +33,15 @@ ruleset chapter_Seven {
 		}
 		{
 		notify("Showing the Paragraph", add_paragraph) with sticky=true;
-
-		watch("#my_form", "submit");
 		}
+		/*watch("#my_form", "submit");
+		
 		fired {
 			last;
-		}
+		}*/
 	}
 
 	
 	
 }
-
 
