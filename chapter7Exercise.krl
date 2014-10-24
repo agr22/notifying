@@ -31,12 +31,15 @@ ruleset chapter_Seven {
 			>>;
 
 		}
-		{
-		notify("Showing the Paragraph", add_paragraph) with sticky=true;
-		}
-		/*watch("#my_form", "submit");
 		
-		fired {
+		if(not ent:first) then {
+			append("#my_div", a_form);
+			watch("#my_form", "submit");
+		}
+
+		notify("Showing the Paragraph", add_paragraph) with sticky=true;
+		
+		/*fired {
 			last;
 		}*/
 	}
