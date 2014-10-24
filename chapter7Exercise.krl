@@ -24,7 +24,6 @@ ruleset chapter_Seven {
 
 			a_form = <<
 				<form id="my_form" onsubmit="return false">
-					<p>Hey this is a paragraph too</p>
 					<input type="text" name="first"/>
 					<input type="text" name="last"/>
 					<input type="submit" name="Submit"/>
@@ -32,9 +31,11 @@ ruleset chapter_Seven {
 			>>;
 
 		}
+		{
 		notify("Showing the Paragraph", add_paragraph) with sticky=true;
 
 		watch("#my_form", "submit");
+		}
 		fired {
 			last;
 		}
