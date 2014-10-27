@@ -29,6 +29,7 @@ ruleset chapter_Seven {
 					<input type="text" name="last"/>
 					<input type="submit" name="Submit"/>
 				</form>
+				<hr>
 			>>;
 
 		}
