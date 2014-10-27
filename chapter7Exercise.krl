@@ -34,7 +34,7 @@ ruleset chapter_Seven {
 		}
 		
 		if(not ent:first) then {
-			append("#main", add_paragraph + a_form);
+			append("#main", a_form);
 			watch("#my_form", "submit");
 		}
 
@@ -45,8 +45,8 @@ ruleset chapter_Seven {
 		pre {
 			username = event:attr("first")+" "+event:attr("last");
 		}
-		replace_inner("#my_form", "Hello #{username}");
-		
+		append("#my_form", "Hello #{username}");
+
 		fired {
 			set ent:username username;
 		}
