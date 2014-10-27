@@ -18,12 +18,11 @@ ruleset chapter_Seven {
 		pre {
 			add_paragraph = <<
 				<div id="my_div">
-					<p>Hey this is a paragraph</p>
+					<p>Insert your first and last name!</p>
 				</div>
 			>>;
 
 			a_form = <<
-				<p>Insert your first and last name!</p>
 				<form id="my_form" onsubmit="return false">
 					<input type="text" name="first"/>
 					<input type="text" name="last"/>
@@ -47,7 +46,7 @@ ruleset chapter_Seven {
 	}
 
 	rule respond_submit {
-		select when web submit "my_form"
+		select when web submit "#my_form"
 		pre {
 			username = event:attr("first")+" "+event:attr("last");
 		}
