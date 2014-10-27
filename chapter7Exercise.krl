@@ -23,6 +23,7 @@ ruleset chapter_Seven {
 			>>;*/
 
 			a_form = <<
+				<p>Insert your first and last name!</p>
 				<form id="my_form" onsubmit="return false">
 					<input type="text" name="first"/>
 					<input type="text" name="last"/>
