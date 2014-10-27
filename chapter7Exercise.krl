@@ -43,14 +43,33 @@ ruleset chapter_Seven {
 	rule respond_submit {
 		select when web submit "#my_form"
 		pre {
-			username = event:attr("first")+" "+event:attr("last");
+			firstName = event:attr("first");
+			lastName = event:attr("last");
 		}
-		append("#main", "Hello #{username}");
+		append("#main", "Hello #{firstName} #{lastName}");
 
 		fired {
-			set ent:username username;
+			set ent:firstName firstName;
+			set ent:lastName lastName;
+		}
+		//one problem is that if I continue to click submit, it will continue to reprint the Hello username
+
+	}
+
+	rule clear_input {
+		select when pageview ".*" setting()
+		pre {
+			queryString= page:url("query");
+			inputClear = queryString.extract(re#(clear=1)#);
 		}
 
+		if inputClear == 1 then
+			notify("Clear", "We're clearing the username!") with sticky = true;
+
+		fired{
+			clear ent:firstName;
+			clear ent:lastName;
+		}
 	}
 
 	
