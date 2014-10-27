@@ -45,7 +45,7 @@ ruleset chapter_Seven {
 		pre {
 			username = event:attr("first")+" "+event:attr("last");
 		}
-		replace_inner("#main", "Hello #{username}");
+		append("#main", "Hello #{username}");
 
 		fired {
 			set ent:username username;
