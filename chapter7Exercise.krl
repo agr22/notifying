@@ -16,11 +16,11 @@ ruleset chapter_Seven {
 		select when pageview ".*" setting()
 		
 		pre {
-			/*add_paragraph = <<
+			add_paragraph = <<
 				<div id="my_div">
 					<p>Hey this is a paragraph</p>
 				</div>
-			>>;*/
+			>>;
 
 			a_form = <<
 				<p>Insert your first and last name!</p>
@@ -34,7 +34,7 @@ ruleset chapter_Seven {
 		}
 		
 		if(not ent:first) then {
-			append("#main", a_form);
+			append("#main", add_paragraph + a_form);
 			watch("#my_form", "submit");
 		}
 
@@ -43,9 +43,21 @@ ruleset chapter_Seven {
 		/*fired {
 			last;
 		}*/
+
 	}
 
-	
+	rule respond_submit {
+		select when web submit "my_form"
+		pre {
+			username = event:attr("first")+" "+event:attr("last");
+		}
+		replace_inner("my_div", "Hello #{username}");
+		fired {
+			set ent:username username;
+		}
+
+	}
+
 	
 }
 
