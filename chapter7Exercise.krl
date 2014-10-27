@@ -29,7 +29,6 @@ ruleset chapter_Seven {
 					<input type="text" name="last"/>
 					<input type="submit" name="Submit"/>
 				</form>
-				<br>
 			>>;
 
 		}
@@ -46,7 +45,7 @@ ruleset chapter_Seven {
 		pre {
 			username = event:attr("first")+" "+event:attr("last");
 		}
-		append("#my_form", "Hello #{username}");
+		replace_inner("#main", "Hello #{username}");
 
 		fired {
 			set ent:username username;
