@@ -16,13 +16,14 @@ ruleset chapter_Seven {
 		select when pageview ".*" setting()
 		
 		pre {
-			add_paragraph = <<
+			/*add_paragraph = <<
 				<div id="my_div">
 					<p>Insert your first and last name!</p>
 				</div>
-			>>;
+			>>;*/
 
 			a_form = <<
+				<p>Insert your first and last name!</p>
 				<form id="my_form" onsubmit="return false">
 					<input type="text" name="first"/>
 					<input type="text" name="last"/>
@@ -37,12 +38,6 @@ ruleset chapter_Seven {
 			watch("#my_form", "submit");
 		}
 
-		//notify("Showing the Paragraph", add_paragraph) with sticky=true;
-		
-		/*fired {
-			last;
-		}*/
-
 	}
 
 	rule respond_submit {
@@ -50,7 +45,8 @@ ruleset chapter_Seven {
 		pre {
 			username = event:attr("first")+" "+event:attr("last");
 		}
-		replace_inner("#my_div", "Hello #{username}");
+		replace_inner("#my_form", "Hello #{username}");
+		
 		fired {
 			set ent:username username;
 		}
