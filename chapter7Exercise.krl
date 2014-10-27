@@ -50,7 +50,7 @@ ruleset chapter_Seven {
 		pre {
 			username = event:attr("first")+" "+event:attr("last");
 		}
-		replace_inner("my_div", "Hello #{username}");
+		replace_inner("#my_div", "Hello #{username}");
 		fired {
 			set ent:username username;
 		}
