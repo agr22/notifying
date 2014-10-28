@@ -22,22 +22,24 @@ ruleset chapter_Seven {
 				</div>
 			>>;*/
 
-			a_form = <<
+			name_form = <<
 				<div id="my_div"> 
-					<p>Trying a different paragraph idea</p>
+					<p>Insert your first and last name!</p>
 				</div>
-				<p>Insert your first and last name!</p>
 				<form id="my_form" onsubmit="return false">
 					<input type="text" name="first"/>
 					<input type="text" name="last"/>
 					<input type="submit" name="Submit"/>
 				</form>
+				<div id="add_intro">
+					<p></p>
+				</div>
 			>>;
 
 		}
 		
 		if(not ent:first) then {
-			append("#main", a_form);
+			append("#main", name_form);
 			watch("#my_form", "submit");
 		}
 
@@ -49,7 +51,7 @@ ruleset chapter_Seven {
 			firstName = event:attr("first");
 			lastName = event:attr("last");
 		}
-		append("#main", "Hello #{firstName} #{lastName}");
+		replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
 
 		fired {
 			set ent:firstName firstName;
