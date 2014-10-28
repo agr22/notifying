@@ -55,6 +55,16 @@ ruleset chapter_Seven {
 
 	}
 
+	rule replace_with_name {		//This makes it so if I re-enter the page, the values stay there
+		select when web pageview ".*"		//problem: this automatically comes up from the start...
+		
+		pre {
+			firstName = current ent:firstName;		//how does this pick up nothing if I haven't submitted?
+			lastName = current ent:lastName;
+		}
+		replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
+	}
+
 	rule clear_input {
 		select when pageview ".*" setting()
 		pre {
@@ -71,14 +81,7 @@ ruleset chapter_Seven {
 		}
 	}
 
-	rule replace_with_name {
-		select when web pageview ".*"
-		pre {
-			firstName = current ent:firstName;
-			lastName = current ent:lastName;
-		}
-		replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
-	}
+
 
 	
 }
