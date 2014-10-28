@@ -16,12 +16,7 @@ ruleset chapter_Seven {
 		select when pageview ".*" setting()
 		
 		pre {
-			/*add_paragraph = <<
-				<div id="my_div">
-					<p>Insert your first and last name!</p>
-				</div>
-			>>;*/
-
+			
 			name_form = <<
 				<div id="my_div"> 
 					<p>Insert your first and last name!</p>
@@ -57,7 +52,6 @@ ruleset chapter_Seven {
 			set ent:firstName firstName;
 			set ent:lastName lastName;
 		}
-		//one problem is that if I continue to click submit, it will continue to reprint the Hello username
 
 	}
 
@@ -68,13 +62,22 @@ ruleset chapter_Seven {
 			inputClear = queryString.extract(re#(clear=1)#);
 		}
 
-		if inputClear == 1 then
+		if inputClear.length()>0 then
 			notify("Clear", "We're clearing the username!") with sticky = true;
 
 		fired{
 			clear ent:firstName;
 			clear ent:lastName;
 		}
+	}
+
+	rule replace_with_name {
+		select when web pageview ".*"
+		pre {
+			firstName = current ent:firstName;
+			lastName = current ent:lastName;
+		}
+		replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
 	}
 
 	
