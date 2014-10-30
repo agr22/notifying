@@ -1,4 +1,4 @@
-
+//b506537x3
 ruleset notification {
 	meta {
 		name "notifying"
@@ -41,7 +41,7 @@ ruleset notification {
 			notify("View Count", "You have viewed this " + c + " times!") with sticky = true; 
 
 		fired {
-			ent:count +=1 from 0;
+			ent:count +=1 from 1;
 		} 
 
 	}
