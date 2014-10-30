@@ -34,7 +34,7 @@ ruleset notification {
 	rule count_rule is active{			//testing out how online code works.
 		select when pageview ".*" setting()
 		pre {
-			c = ent:count
+			c = ent:count +1;
 		}
 
 		if (c<=5) then 
