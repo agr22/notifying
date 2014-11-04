@@ -33,7 +33,7 @@ ruleset chapter_Seven {
 
 		}
 		
-		if(not ent:first) then {
+		if(not ent:firstName || ent:lastName) then {
 			append("#main", name_form);
 			watch("#my_form", "submit");
 		}
