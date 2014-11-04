@@ -22,7 +22,8 @@ ruleset notification {
 			querString= page:url("query");
 
 			getName = function (x) { 
-				array = x.extract(re#name=(\w+)#g);
+				//array = x.extract(re#name=(\w+)#g); 
+				array = x.extract(re/name=(\w+)/g); //x.extract(re/a(\w+)/g)
 				(array.length()>0) => array.join(" ") | "Monkey"; 
 			}; 
 
@@ -34,7 +35,7 @@ ruleset notification {
 	rule count_rule is active{			//testing out how online code works.
 		select when pageview ".*" setting()
 		pre {
-			c = ent:count +1;
+			c = ent:count;
 		}
 
 		if (c<=5) then 
