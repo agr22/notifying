@@ -67,7 +67,7 @@ ruleset chapter_Seven {
 			firstName = ent:firstName;		//how does this not hold anything from previously being submitted?
 			lastName = ent:lastName;
 		}
-		if (firstName.length()>0 || lastName.length()>0) then
+		//if (firstName.length()>0 || lastName.length()>0) then
 			replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
 	}
 
