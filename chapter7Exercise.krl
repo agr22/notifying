@@ -62,7 +62,8 @@ ruleset chapter_Seven {
 			firstName = current ent:firstName;		//how does this pick up nothing if I haven't submitted?
 			lastName = current ent:lastName;
 		}
-		replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
+		if not firstName then
+			replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
 	}
 
 	rule clear_input {
