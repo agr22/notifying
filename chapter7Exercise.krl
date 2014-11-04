@@ -51,7 +51,7 @@ ruleset chapter_Seven {
 		fired {
 			set ent:firstName firstName;
 			set ent:lastName lastName;
-			last;
+			//last;
 		}
 
 	}
@@ -60,8 +60,8 @@ ruleset chapter_Seven {
 		select when web pageview ".*"		//problem: this automatically comes up from the start...
 		
 		pre {
-			firstName = current ent:firstName;		//how does this pick up nothing if I haven't submitted?
-			lastName = current ent:lastName;
+			firstName = ent:firstName;		//how does this pick up nothing if I haven't submitted?
+			lastName = ent:lastName;
 		}
 		if (firstName.length()>0 || lastName.length()>0) then
 			replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
