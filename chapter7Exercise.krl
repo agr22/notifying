@@ -51,6 +51,7 @@ ruleset chapter_Seven {
 		fired {
 			set ent:firstName firstName;
 			set ent:lastName lastName;
+			last;
 		}
 
 	}
@@ -62,7 +63,7 @@ ruleset chapter_Seven {
 			firstName = current ent:firstName;		//how does this pick up nothing if I haven't submitted?
 			lastName = current ent:lastName;
 		}
-		if firstName.length()>0 then
+		if (firstName.length()>0 || lastName.length()>0) then
 			replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
 	}
 
