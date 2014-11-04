@@ -37,6 +37,9 @@ ruleset chapter_Seven {
 			append("#main", name_form);
 			watch("#my_form", "submit");
 		}
+		fired {
+			last;
+		}
 
 	}
 
@@ -45,6 +48,7 @@ ruleset chapter_Seven {
 		pre {
 			firstName = event:attr("first");
 			lastName = event:attr("last");
+			//set ent:firstName firstName;
 		}
 		replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
 
@@ -60,7 +64,7 @@ ruleset chapter_Seven {
 		select when web pageview ".*"		//problem: this automatically comes up from the start...
 		
 		pre {
-			firstName = ent:firstName;		//how does this pick up nothing if I haven't submitted?
+			firstName = ent:firstName;		//how does this not hold anything from previously being submitted?
 			lastName = ent:lastName;
 		}
 		if (firstName.length()>0 || lastName.length()>0) then
