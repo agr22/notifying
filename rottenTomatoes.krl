@@ -12,13 +12,21 @@ ruleset rotten_tomatoes {
 		domain "http://ktest.heroku.com"
 	}
 	global {
-		//dataset tomatoes_api <- http:get("http://api.rottentomatoes.com/api/public/v1.0/movies.json");
+		
+		tomatoes_api = function(searchTitle) {http:get("http://api.rottentomatoes.com/api/public/v1.0/movies.json",
+											{"apikey": "waiting on this",
+											 "q": searchTitle,
+											 "page_limit": 1});
+								}
 	}
 	
 	rule sqTagApp {
 		select when web cloudAppSelected
 		pre {
 			my_html = <<
+				<div id="add_movie_info">
+					<p></p>
+				</div>
 				<div id="my_div"> 
 					<p>Insert a movie title!</p>
 				</div>
@@ -32,8 +40,31 @@ ruleset rotten_tomatoes {
 		{
       		SquareTag:inject_styling();
      	 	CloudRain:createLoadPanel("Rotten Tomatoes", {}, my_html);
+     	 	watch("#form", "submit");
     	}
 
+	}
+
+	rule display_movie {
+		select when web submit "#my_form"
+		pre {
+			movieName = event:attr("movie");
+
+			movie_info_print = <<
+				<p>The Movie you searched for:</p>
+				<div id="my_div"> 
+					<p>Insert a movie title!</p>
+				</div>
+				
+			>>;
+
+			movie_info = tomatoes_api(movieName);
+			getTitle = movie_info.pick("$.movies[0].title");
+
+
+
+		}
+		replace_inner("#add_movie_info", "#movie_info_print");
 	}
 
 }

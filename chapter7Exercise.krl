@@ -22,8 +22,8 @@ ruleset chapter_Seven {
 					<p>Insert your first and last name!</p>
 				</div>
 				<form id="my_form" onsubmit="return false">
-					<input type="text" name="first"/>
-					<input type="text" name="last"/>
+					<input type="text" name="first"/> <br>
+					<input type="text" name="last"/> <br>
 					<input type="submit" name="Submit"/>
 				</form>
 				<div id="add_intro">
