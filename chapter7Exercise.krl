@@ -66,6 +66,7 @@ ruleset chapter_Seven {
 		}
 		//if (firstName.length()>0 || lastName.length()>0) then
 			replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
+			notify("Hi","This rule works") with sticky = true;
 	}
 
 	/*rule clear_input {
