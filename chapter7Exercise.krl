@@ -13,7 +13,7 @@ ruleset chapter_Seven {
 	}
 	
 	rule show_form {			
-		select when pageview ".*" setting()
+		select when pageview url #.*#
 		
 		pre {
 			
