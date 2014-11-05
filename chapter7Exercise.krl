@@ -34,9 +34,9 @@ ruleset chapter_Seven {
 			append("#main", name_form);
 			watch("#my_form", "submit");
 		}
-		fired {
-			last;
-		}
+		//fired {
+			//last;
+		//}
 
 	}
 
