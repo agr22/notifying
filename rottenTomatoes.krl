@@ -13,11 +13,14 @@ ruleset rotten_tomatoes {
 	}
 	global {
 		
-		tomatoes_api = function(searchTitle) {http:get("http://api.rottentomatoes.com/api/public/v1.0/movies.json",
-											{"apikey": "waiting on this",
-											 "q": searchTitle,
-											 "page_limit": 1});
-								}
+		tomatoes_api = function(searchTitle) {
+				val = http:get("http://api.rottentomatoes.com/api/public/v1.0/movies.json",
+							{"apikey": "8tyyqkacg5r5wk57kaakrzzd",
+							 "q": searchTitle,
+							 "page_limit": 1});
+				json_from_url = val.pick("$.content").decode();
+				json_from_url
+			}
 	}
 	
 	rule sqTagApp {
@@ -38,7 +41,7 @@ ruleset rotten_tomatoes {
 		}
 
 		{
-      		SquareTag:inject_styling();
+      		SquareTag:inject_styling(); //remove this and do replace_inner
      	 	CloudRain:createLoadPanel("Rotten Tomatoes", {}, my_html);
      	 	watch("#form", "submit");
     	}
@@ -49,6 +52,14 @@ ruleset rotten_tomatoes {
 		select when web submit "#my_form"
 		pre {
 			movieName = event:attr("movie");
+			//movie_rt = tomatoes_api(movieName);
+
+				/*movieThumbnail = movie_rt.pick($.thumbnail);
+				title = movie_rt.pick($.title);
+				releaseYear = movie_rt.pick($.release_date[0]);
+				synopsis = movie_rt.pick($.synopsis);
+				criticRatings = movie_rt.pick();*/
+
 
 			movie_info_print = <<
 				<p>The Movie you searched for:</p>
@@ -59,12 +70,12 @@ ruleset rotten_tomatoes {
 			>>;
 
 			movie_info = tomatoes_api(movieName);
-			getTitle = movie_info.pick("$.movies[0].title");
+			getYear = movie_info.pick("$.year");
 
 
 
 		}
-		replace_inner("#add_movie_info", "#movie_info_print");
+		replace_inner("#add_movie_info", "Year #{getYear}");
 	}
 
 }
