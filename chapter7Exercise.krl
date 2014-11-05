@@ -5,9 +5,6 @@ ruleset chapter_Seven {
 		author "Ashlee"
 		logging on
 	}
-	dispatch {
-		domain "http://ktest.heroku.com"
-	}
 	global {
 		
 	}
@@ -71,7 +68,7 @@ ruleset chapter_Seven {
 			replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
 	}
 
-	rule clear_input {
+	/*rule clear_input {
 		select when pageview ".*" setting()
 		pre {
 			queryString= page:url("query");
@@ -85,7 +82,7 @@ ruleset chapter_Seven {
 			clear ent:firstName;
 			clear ent:lastName;
 		}
-	}
+	}*/
 
 
 
