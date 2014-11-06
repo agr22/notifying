@@ -49,7 +49,7 @@ ruleset rotten_tomatoes {
 	rule display_movie {
 		select when web submit "#my_form"
 		pre {
-			/*movieName = event:attr("movie");
+			movieName = event:attr("movie");
 			//movie_rt = tomatoes_api(movieName);
 
 				//movieThumbnail = movie_rt.pick($.thumbnail);
@@ -68,13 +68,13 @@ ruleset rotten_tomatoes {
 			>>;
 
 			movie_info = tomatoes_api(movieName);
-			getYear = movie_info.pick("$.year");*/
+			getYear = movie_info.pick("$.year");
 
 
 
 		}
 		//replace_inner("#add_movie_info", "Year #{getYear}");
-		//replace_inner("#add_movie_info", movie_info_print);
+		replace_inner("#add_movie_info", movie_info_print);
 		notify("Hey", "This rule is working!") with sticky = true;
 	}
 
