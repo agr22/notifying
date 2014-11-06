@@ -74,7 +74,7 @@ ruleset rotten_tomatoes {
 
 		}
 		//replace_inner("#add_movie_info", "Year #{getYear}");
-		replace_inner("#add_movie_info", "#movie_info_print");
+		replace_inner("#add_movie_info", "Hello");
 		notify("Hey", "This rule is working!") with sticky = true;
 	}
 
