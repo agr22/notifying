@@ -16,7 +16,8 @@ ruleset rotten_tomatoes {
 							 "q": searchTitle,
 							 "page_limit": 1});
 				json_from_url = val.pick("$.content").decode();
-				json_from_url
+				
+				json_from_url;
 			}
 	}
 	
@@ -74,7 +75,8 @@ ruleset rotten_tomatoes {
 
 		}
 		//replace_inner("#add_movie_info", "Year #{getYear}");
-		replace_inner("#add_movie_info", "Hello");
+		//replace_inner("#add_movie_info", "Hello");
+		notify("JSON:", movie_info) with sticky = true;
 		notify("Hey", getYear) with sticky = true;
 	}
 
