@@ -47,7 +47,7 @@ ruleset chapter_Seven {
 			lastName = event:attr("last");
 			//set ent:firstName firstName;
 		}
-		replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
+		replace_inner("#add_intro", "Hello #{firstName}"); //#{lastName}");
 
 		fired {
 			set ent:firstName firstName;
@@ -65,7 +65,7 @@ ruleset chapter_Seven {
 			//lastName = ent:lastName;
 		}
 		//if (firstName.length()>0 || lastName.length()>0) then
-			replace_inner("#add_intro", "Hello #{firstName} #{lastName}");
+			replace_inner("#add_intro", "Hello #{firstName}"); //" #{lastName}");
 			notify("Hi","This rule works") with sticky = true;
 	}
 
