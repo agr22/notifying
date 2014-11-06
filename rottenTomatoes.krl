@@ -8,11 +8,8 @@ ruleset rotten_tomatoes {
 		use module a169x701 alias CloudRain
     	use module a41x186  alias SquareTag
 	}
-	dispatch {
-		domain "http://ktest.heroku.com"
-	}
+
 	global {
-		
 		tomatoes_api = function(searchTitle) {
 				val = http:get("http://api.rottentomatoes.com/api/public/v1.0/movies.json",
 							{"apikey": "8tyyqkacg5r5wk57kaakrzzd",
@@ -41,9 +38,9 @@ ruleset rotten_tomatoes {
 		}
 
 		{
-      		SquareTag:inject_styling(); //remove this and do replace_inner
-     	 	//CloudRain:createLoadPanel("Rotten Tomatoes", {}, my_html);
-     	 	replace_inner("#main", my_html);
+      		//SquareTag:inject_styling(); //remove this and do replace_inner
+     	 	CloudRain:createLoadPanel("Rotten Tomatoes", {}, my_html);
+     	 	//replace_inner("#main", my_html);
      	 	watch("#form", "submit");
     	}
 
