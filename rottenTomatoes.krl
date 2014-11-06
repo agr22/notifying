@@ -41,9 +41,9 @@ ruleset rotten_tomatoes {
 		}
 
 		{
-      		//SquareTag:inject_styling(); //remove this and do replace_inner
-     	 	//CloudRain:createLoadPanel("Rotten Tomatoes", {}, my_html);
-     	 	replace_inner("#main", my_html);
+      		SquareTag:inject_styling(); //remove this and do replace_inner
+     	 	CloudRain:createLoadPanel("Rotten Tomatoes", {}, my_html);
+     	 	//replace_inner("#main", my_html);
      	 	watch("#form", "submit");
     	}
 
