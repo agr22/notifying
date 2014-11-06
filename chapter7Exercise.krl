@@ -45,14 +45,12 @@ ruleset chapter_Seven {
 		pre {
 			firstName = event:attr("first");
 			lastName = event:attr("last");
-			//set ent:firstName firstName;
 		}
 		replace_inner("#add_intro", "Hello #{firstName}"); //#{lastName}");
 
 		fired {
 			set ent:firstName firstName;
-			//set ent:lastName lastName;
-			//last;
+			set ent:lastName lastName;
 		}
 
 	}
@@ -62,10 +60,10 @@ ruleset chapter_Seven {
 		
 		pre {
 			firstName = ent:firstName;		//how does this not hold anything from previously being submitted?
-			//lastName = ent:lastName;
+			lastName = ent:lastName;
 		}
 		//if (firstName.length()>0 || lastName.length()>0) then
-			replace_inner("#add_intro", "Hello #{firstName}"); //" #{lastName}");
+			replace_inner("#add_intro", "Hello #{firstName}"); //#{lastName}");
 			notify("Hi","This rule works") with sticky = true;
 	}
 
