@@ -67,15 +67,15 @@ ruleset rotten_tomatoes {
 				
 			>>;
 
-			//movie_info = tomatoes_api(movieName);
-			//getYear = movie_info.pick("$.year");
+			movie_info = tomatoes_api(movieName);
+			getYear = movie_info.pick("$.year");
 
 
 
 		}
 		//replace_inner("#add_movie_info", "Year #{getYear}");
 		replace_inner("#add_movie_info", "Hello");
-		notify("Hey", "This rule is working!") with sticky = true;
+		notify("Hey", "Year #{getYear}") with sticky = true;
 	}
 
 }
