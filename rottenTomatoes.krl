@@ -69,7 +69,7 @@ ruleset rotten_tomatoes {
 			>>;
 
 			movie_info = tomatoes_api(movieName);
-			getTitle = movie_info{"title"};
+			getTitle = movie_info{"movies.title"};
 
 
 
