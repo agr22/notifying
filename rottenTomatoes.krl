@@ -69,7 +69,7 @@ ruleset rotten_tomatoes {
 			>>;
 
 			movie_info = tomatoes_api(movieName);
-			getYear = movie_info[0];
+			getYear = movie_info.map(function(m){m{"title"}});
 
 
 
