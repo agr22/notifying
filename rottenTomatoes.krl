@@ -69,7 +69,7 @@ ruleset rotten_tomatoes {
 			>>;
 
 			movie_info = tomatoes_api(movieName);
-			getYear = movie_info.map(function(m){m{"title"}});
+			getTitle = movie_info{"title"};
 
 
 
@@ -77,7 +77,7 @@ ruleset rotten_tomatoes {
 		//replace_inner("#add_movie_info", "Year #{getYear}");
 		//replace_inner("#add_movie_info", "Hello");
 		notify("JSON:", movie_info) with sticky = true;
-		notify("Hey", getYear) with sticky = true;
+		notify("Hey", getTitle) with sticky = true;
 	}
 
 }
