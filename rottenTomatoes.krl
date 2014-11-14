@@ -16,8 +16,9 @@ ruleset rotten_tomatoes {
 							 "q": searchTitle,
 							 "page_limit": 1});
 				json_from_url = val.pick("$.content").decode();
+				pick_movie = json_from_url.pick("$.movies");
 				
-				json_from_url;
+				pick_movie;
 			}
 	}
 	
@@ -69,7 +70,8 @@ ruleset rotten_tomatoes {
 			>>;
 
 			movie_info = tomatoes_api(movieName);
-			getTitle = movie_info{"$.movies.title[0]"};
+			getTitle = movie_info{"title"};
+			//getTotal = movie_info{"total"}; 		this works. it pulls the total out but that's because it's not within the movie JSONPath
 
 
 
