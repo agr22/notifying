@@ -69,10 +69,10 @@ ruleset rotten_tomatoes {
 				<p>The Movie you searched for:</p>
 				<div id="a_div"> 
 					Movie:<p>#{movie_info{"title"}}</p>
-					Release Year:<p>#{getReleaseYear}</p>
+					<!-->Release Year:<p>#{getReleaseYear}</p>
 					<p>#{getSynopsis}</p>
 					<p>#{getCriticRatings}</p>
-					<!--><p>#{}</p><-->
+					<p>#{}</p><-->
 				</div>
 				
 			>>;
