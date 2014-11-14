@@ -16,9 +16,10 @@ ruleset rotten_tomatoes {
 							 "q": searchTitle,
 							 "page_limit": 1});
 				json_from_url = val.pick("$.content").decode();
-				pick_movie = json_from_url.pick("$.movies");
-				
-				pick_movie;
+				pick_movies = json_from_url.pick("$.movies");
+				first_movie = pick_movies[0];
+
+				first_movie;
 			}
 	}
 	
@@ -70,17 +71,17 @@ ruleset rotten_tomatoes {
 			>>;
 
 			movie_info = tomatoes_api(movieName);
-			movie_stuff = movie_info[0];
-			getTitle = movie_stuff{"title"};
-			//getTotal = movie_info{"total"}; 		this works. it pulls the total out but that's because it's not within the movie JSONPath
+			getTitle = movie_info{"title"};
+			
 
 
 
 		}
 		//replace_inner("#add_movie_info", "Year #{getYear}");
 		//replace_inner("#add_movie_info", "Hello");
-		notify("JSON:", movie_info) with sticky = true;
-		notify("Hey", "Name:" + getTitle) with sticky = true;
+		notify("Hey", movie_info_print) with sticky = true;
+		notify("Info about that movie", "Name: " + movie_info{"title"} + "") with sticky = true;
+		notify("Info about that movie", "Year: " + movie_info{"year"} + "") with sticky = true;
 	}
 
 }
