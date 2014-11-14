@@ -24,7 +24,7 @@ ruleset rotten_tomatoes {
 	}
 	
 	rule sqTagApp {
-		select when web cloudAppSelected
+		select when web pageview ".*"	
 		pre {
 			my_html = <<
 				<div id="my_div"> 
