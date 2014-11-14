@@ -62,7 +62,7 @@ ruleset rotten_tomatoes {
 			movie_info_print = <<
 				<p>The Movie you searched for:</p>
 				<div id="my_div"> 
-					<p>Insert a movie title!</p>
+					Movie:<p>#{movie_info{"title"}}</p>
 				</div>
 				
 			>>;
@@ -78,7 +78,7 @@ ruleset rotten_tomatoes {
 		//replace_inner("#add_movie_info", "Hello");
 		{
 		notify("Hey", movie_info_print) with sticky = true;
-		append(my_form, movie_info_print);
+		append("#my_form", movie_info_print);
 		//notify("Info about that movie", "Name: " + movie_info{"title"} + "") with sticky = true;
 		//notify("Info about that movie", "Year: " + movie_info{"year"} + "") with sticky = true;
 		}
