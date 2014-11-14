@@ -64,7 +64,7 @@ ruleset rotten_tomatoes {
 			movie_info_print = <<
 				<p>The Movie you searched for:</p>
 				<div id="my_div"> 
-					Movie:<p>#{movie_info{"title"}}</p>
+					Movie:<p>#{getTitle}</p>
 				</div>
 				
 			>>;
