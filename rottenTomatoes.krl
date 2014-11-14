@@ -58,6 +58,8 @@ ruleset rotten_tomatoes {
 				//synopsis = movie_rt.pick($.synopsis);
 				//criticRatings = movie_rt.pick();
 
+			movie_info = tomatoes_api(movieName);
+			getTitle = movie_info{"title"};
 
 			movie_info_print = <<
 				<p>The Movie you searched for:</p>
@@ -67,8 +69,6 @@ ruleset rotten_tomatoes {
 				
 			>>;
 
-			movie_info = tomatoes_api(movieName);
-			getTitle = movie_info{"title"};
 			
 
 
@@ -78,7 +78,7 @@ ruleset rotten_tomatoes {
 		//replace_inner("#add_movie_info", "Hello");
 		{
 		notify("Hey", movie_info_print) with sticky = true;
-		append("#my_form", movie_info_print);
+		//append("#my_form", movie_info_print);
 		//notify("Info about that movie", "Name: " + movie_info{"title"} + "") with sticky = true;
 		//notify("Info about that movie", "Year: " + movie_info{"year"} + "") with sticky = true;
 		}
