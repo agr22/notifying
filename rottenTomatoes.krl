@@ -27,14 +27,11 @@ ruleset rotten_tomatoes {
 		select when web cloudAppSelected
 		pre {
 			my_html = <<
-				<div id="add_movie_info">
-					<p></p>
-				</div>
 				<div id="my_div"> 
 					<p>Insert a movie title! update</p>
 				</div>
 				<form id="my_form" onsubmit="return false">
-					<input type="text" name="movie"/>
+					<input type="text" name="movie"/><br>
 					<input type="submit" name="Submit"/>
 				</form>
 			>>;
@@ -42,8 +39,8 @@ ruleset rotten_tomatoes {
 
 		{
       		//SquareTag:inject_styling(); //remove this and do replace_inner
-     	 	CloudRain:createLoadPanel("Rotten Tomatoes", {}, my_html);
-     	 	//replace_inner("#main", my_html);
+     	 	//CloudRain:createLoadPanel("Rotten Tomatoes", {}, my_html);
+     	 	replace_inner("#footer", my_html);
      	 	watch("#my_form", "submit");
     	}
 
