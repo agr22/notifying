@@ -70,7 +70,8 @@ ruleset rotten_tomatoes {
 			>>;
 
 			movie_info = tomatoes_api(movieName);
-			getTitle = movie_info{"title"};
+			movie_stuff = movie_info[0];
+			getTitle = movie_stuff{"title"};
 			//getTotal = movie_info{"total"}; 		this works. it pulls the total out but that's because it's not within the movie JSONPath
 
 
