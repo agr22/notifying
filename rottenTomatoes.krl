@@ -53,8 +53,8 @@ ruleset rotten_tomatoes {
 			getCriticRatings = "Critic Ratings: " + movie_info{"$..critics_rating"} + "<br>";
 			//how can I get the critic ratings without using pick? is pick more efficient?
 
-			(movie_info.length()<0) => movie_info_print = "I'm sorry, that didn't return anything. Please enter the name a of different movie."
-									| movie_info_print = "<p>" + getTitle + getThumbnail + getReleaseYear + getSynopsis + getCriticRatings + "</p>";
+			movie_info_print = (movie_info.length()<0) => "I'm sorry, that didn't return anything. Please enter the name a of different movie."
+									| "<p>" + getTitle + getThumbnail + getReleaseYear + getSynopsis + getCriticRatings + "</p>";
 		}
 
 		{
