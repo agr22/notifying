@@ -61,8 +61,8 @@ ruleset rotten_tomatoes {
 			movie_info = tomatoes_api(movieName);
 			getTitle = movie_info{"title"};
 			//getThumbnail = movie_info{"thumbnail"};
-			getReleaseYear = movie_info{"year"};
-			getSynopsis = movie_info{"synopsis"};
+			//getReleaseYear = movie_info{"year"};
+			//getSynopsis = movie_info{"synopsis"};
 			//getCriticRatings = movie_info{"critics_rating"};
 
 
@@ -71,9 +71,9 @@ ruleset rotten_tomatoes {
 				<p>The Movie you searched for:</p>			
 				<div id="a_div"> 
 					Movie:<p>#{getTitle}</p>
-					Release Year:<p>#{getReleaseYear}</p>
+					<!-->Release Year:<p>#{getReleaseYear}</p>
 					<p>#{getSynopsis}</p>
-					<!--><p>#{getCriticRatings}</p>
+					<p>#{getCriticRatings}</p>
 					<p>#{}</p><-->
 				</div>
 				
