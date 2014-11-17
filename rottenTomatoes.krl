@@ -56,7 +56,6 @@ ruleset rotten_tomatoes {
 		}
 
 		{
-		//notify("Hey", movie_info_print) with sticky = true;
 		append("#my_form", "#{movie_info_print}" );
 		}
 	}
