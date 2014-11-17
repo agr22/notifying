@@ -88,7 +88,7 @@ ruleset rotten_tomatoes {
 		//replace_inner("#add_movie_info", "Hello");
 		{
 		notify("Hey", movie_info_print) with sticky = true;
-		append("#my_form", movie_info_print);
+		append("#my_form", "#movie_info_print");
 		//notify("Info about that movie", "Name: " + movie_info{"title"} + "") with sticky = true;
 		//notify("Info about that movie", "Year: " + movie_info{"year"} + "") with sticky = true;
 		}
