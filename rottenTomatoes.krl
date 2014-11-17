@@ -5,8 +5,6 @@ ruleset rotten_tomatoes {
 		description << Rotten Tomatoes >>
 		author "Ashlee"
 		logging on
-		use module a169x701 alias CloudRain
-    	use module a41x186  alias SquareTag
 	}
 
 	global {
@@ -27,19 +25,14 @@ ruleset rotten_tomatoes {
 		select when web pageview ".*"	
 		pre {
 			my_html = <<
-				<div id="my_div"> 
-					<p>Insert a movie title! update</p>
-				</div>
 				<form id="my_form" onsubmit="return false">
-					<input type="text" name="movie"/><br>
+					Insert a movie title! <input type="text" name="movie"/><br>
 					<input type="submit" name="Submit"/>
 				</form>
 			>>;
 		}
 
 		{
-      		//SquareTag:inject_styling(); //remove this and do replace_inner
-     	 	//CloudRain:createLoadPanel("Rotten Tomatoes", {}, my_html);
      	 	replace_inner("#main", my_html);
      	 	watch("#my_form", "submit");
     	}
@@ -50,34 +43,26 @@ ruleset rotten_tomatoes {
 		select when web submit "#my_form"
 		pre {
 			movieName = event:attr("movie");
-
 			movie_info = tomatoes_api(movieName);
-			getTitle = movie_info{"title"};
-			getThumbnail = movie_info{"thumbnail"};
-			getReleaseYear = movie_info{"year"};
-			getSynopsis = movie_info{"synopsis"};
-			getCriticRatings = movie_info{"critics_rating"};
 
-			movie_info_print = <<
+			getTitle = "Movie Title: <p>" + movie_info{"title"} + "</p>";
+			getThumbnail = "Thumbnail: <p>" + movie_info{"thumbnail"} + "</p>";
+			getReleaseYear = "Release Year: <p>" + movie_info{"year"} + "</p>";
+			getSynopsis = "Synopsis: <p>" + movie_info{"synopsis"} + "</p>";
+			getCriticRatings = "Critic Ratings: <p>" + movie_info{"critics_rating"} + "</p>";
+
+			/*movie_info_print = <<
 				<p>The Movie you searched for:</p>
 				<div id="a_div"> 
 					Movie:<p>#{getTitle}</p>
-				</div>
-				
-			>>;
-
-			
-
-
-
+				</div>	
+			>>;*/
+			movie_info_print = getTitle + getThumbnail + getReleaseYear + getSynopsis + getCriticRatings;
 		}
-		//replace_inner("#add_movie_info", "Year #{getYear}");
-		//replace_inner("#add_movie_info", "Hello");
+
 		{
 		notify("Hey", movie_info_print) with sticky = true;
-		append("#my_form", movie_info_print);
-		//notify("Info about that movie", "Name: " + movie_info{"title"} + "") with sticky = true;
-		//notify("Info about that movie", "Year: " + movie_info{"year"} + "") with sticky = true;
+		append("#my_form", "#{movie_info_print}" );
 		}
 	}
 
