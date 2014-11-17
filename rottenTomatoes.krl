@@ -50,13 +50,6 @@ ruleset rotten_tomatoes {
 		select when web submit "#my_form"
 		pre {
 			movieName = event:attr("movie");
-			//movie_rt = tomatoes_api(movieName);
-
-				//movieThumbnail = movie_rt.pick($.thumbnail);
-				//title = movie_rt.pick($.title);
-				//releaseYear = movie_rt.pick($.release_date[0]);
-				//synopsis = movie_rt.pick($.synopsis);
-				//criticRatings = movie_rt.pick();
 
 			movie_info = tomatoes_api(movieName);
 			getTitle = movie_info{"title"};
@@ -64,7 +57,7 @@ ruleset rotten_tomatoes {
 			movie_info_print = <<
 				<p>The Movie you searched for:</p>
 				<div id="a_div"> 
-					Movie:<p>#{getTitle}</p>
+					<p>Movie: #{getTitle}</p>
 				</div>
 				
 			>>;
