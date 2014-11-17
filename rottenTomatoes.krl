@@ -26,7 +26,8 @@ ruleset rotten_tomatoes {
 		pre {
 			my_html = <<
 				<form id="my_form" onsubmit="return false">
-					Insert a movie title! <input type="text" name="movie"/><br>
+					<p>Insert a movie title!</p>
+					<input type="text" name="movie"/><br>
 					<input type="submit" name="Submit"/>
 				</form>
 			>>;
@@ -46,7 +47,7 @@ ruleset rotten_tomatoes {
 			movie_info = tomatoes_api(movieName);
 
 			getTitle = "Movie Title: " + movie_info{"title"} + "<br>";
-			getThumbnail = "Thumbnail: " + movie_info{"thumbnail"} + "<br>";
+			getThumbnail = "Thumbnail: <img src =" + movie_info{"thumbnail"} + "/><br>";
 			getReleaseYear = "Release Year: " + movie_info{"year"} + "<br>";
 			getSynopsis = "Synopsis: " + movie_info{"synopsis"} + "<br>";
 			getCriticRatings = "Critic Ratings: " + movie_info{"critics_rating"} + "<br>";
@@ -55,7 +56,7 @@ ruleset rotten_tomatoes {
 		}
 
 		{
-		notify("Hey", movie_info_print) with sticky = true;
+		//notify("Hey", movie_info_print) with sticky = true;
 		append("#my_form", "#{movie_info_print}" );
 		}
 	}
