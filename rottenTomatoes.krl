@@ -45,19 +45,13 @@ ruleset rotten_tomatoes {
 			movieName = event:attr("movie");
 			movie_info = tomatoes_api(movieName);
 
-			getTitle = "Movie Title: <p>" + movie_info{"title"} + "</p>";
-			getThumbnail = "Thumbnail: <p>" + movie_info{"thumbnail"} + "</p>";
-			getReleaseYear = "Release Year: <p>" + movie_info{"year"} + "</p>";
-			getSynopsis = "Synopsis: <p>" + movie_info{"synopsis"} + "</p>";
-			getCriticRatings = "Critic Ratings: <p>" + movie_info{"critics_rating"} + "</p>";
+			getTitle = "Movie Title: " + movie_info{"title"} + "<br>";
+			getThumbnail = "Thumbnail: " + movie_info{"thumbnail"} + "<br>";
+			getReleaseYear = "Release Year: " + movie_info{"year"} + "<br>";
+			getSynopsis = "Synopsis: " + movie_info{"synopsis"} + "<br>";
+			getCriticRatings = "Critic Ratings: " + movie_info{"critics_rating"} + "<br>";
 
-			/*movie_info_print = <<
-				<p>The Movie you searched for:</p>
-				<div id="a_div"> 
-					Movie:<p>#{getTitle}</p>
-				</div>	
-			>>;*/
-			movie_info_print = getTitle + getThumbnail + getReleaseYear + getSynopsis + getCriticRatings;
+			movie_info_print = "<p>" + getTitle + getThumbnail + getReleaseYear + getSynopsis + getCriticRatings + "</p>";
 		}
 
 		{
