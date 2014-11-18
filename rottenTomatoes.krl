@@ -58,7 +58,7 @@ ruleset rotten_tomatoes {
 		}
 
 		{
-		//notify("Hey", movie_info.pick("$.total")) with sticky = true;
+		notify("Hey", movie_info{"ratings"}) with sticky = true;
 		append("#my_form", "#{movie_info_print}" );
 		}
 	}
