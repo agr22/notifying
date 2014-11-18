@@ -50,7 +50,7 @@ ruleset rotten_tomatoes {
 			getThumbnail = "Thumbnail: <img src =" + movie_info{"thumbnail"} + "/><br>";
 			getReleaseYear = "Release Year: " + movie_info{"year"} + "<br>";
 			getSynopsis = "Synopsis: " + movie_info{"synopsis"} + "<br>";
-			getCriticRatings = "Critic Ratings: " + movie_info{"$..critics_rating"} + "<br>";
+			getCriticRatings = "Critic Ratings: " + movie_info{"ratings"}{"critics_rating"} + "<br>";
 			//how can I get the critic ratings without using pick? is pick more efficient?
 
 
