@@ -47,7 +47,7 @@ ruleset rotten_tomatoes {
 			movie_info = tomatoes_api(movieName);
 
 			getTitle = "Movie Title: " + movie_info{"title"} + "<br>";
-			getThumbnail = "Thumbnail: <img src =" + movie_info{"thumbnail"} + "/><br>";
+			getThumbnail = "Thumbnail: <img src =" + movie_info{["posters", "thumbnail"]} + "/><br>";
 			getReleaseYear = "Release Year: " + movie_info{"year"} + "<br>";
 			getSynopsis = "Synopsis: " + movie_info{"synopsis"} + "<br>";
 			getCriticRatings = "Critic Ratings: " + movie_info{["ratings","critics_rating"]} + "<br>";
