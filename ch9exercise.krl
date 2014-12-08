@@ -26,7 +26,7 @@ ruleset ch9exercise {
 			ent:createdAt = event:attr("createdAt");*/
 		}
 		
-		notify("Process", "This ran") with sticky = true;
+		send_directive("Foursquare Check-In") with checkin = "I have arrived";
 		emit <<
 			console.log("the checkin process ran")
 		>>
