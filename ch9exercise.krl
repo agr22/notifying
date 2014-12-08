@@ -52,9 +52,11 @@ ruleset ch9exercise {
 	rule HelloWorld is active {
     select when web cloudAppSelected
     pre {
+    	v=ent:venue;
+    	new_v=v.as("str");
       my_html = <<
         <h5>Hey! Foursquare!</h5>
-        <p>#{ent:venue}</p> 
+        <p>#{new_v}</p> 
       >>;
     }
     {
