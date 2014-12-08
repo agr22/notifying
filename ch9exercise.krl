@@ -5,6 +5,8 @@ ruleset ch9exercise {
 		name "Chapter Nine Exercises - Four Square"
 		author "Ashlee"
 		logging on
+		use module a169x701 alias CloudRain
+    	use module a41x186  alias SquareTag
 		//apikeys
 		//provides send
 	}
@@ -43,5 +45,19 @@ ruleset ch9exercise {
 		select when foursquare checkin
 		notify("The entity variables",ent:venue); //+ ent:city + ent:shout + ent:createdAt)
 	}
+
+	rule HelloWorld is active {
+    select when web cloudAppSelected
+    pre {
+      my_html = <<
+        <h5>Hey! Foursquare!</h5>
+        <p>#{ent:venue}</p> 
+      >>;
+    }
+    {
+      SquareTag:inject_styling();
+      CloudRain:createLoadPanel("Foursquare", {}, my_html);
+    }
+  }
 
 }
