@@ -43,7 +43,10 @@ ruleset ch9exercise {
 
 	rule display_checkin {
 		select when foursquare checkin
-		notify("The entity variables",ent:venue); //+ ent:city + ent:shout + ent:createdAt)
+		pre{
+			v=ent:venue;
+		}
+		notify("The entity variables",v.as("str")); //+ ent:city + ent:shout + ent:createdAt)
 	}
 
 	rule HelloWorld is active {
