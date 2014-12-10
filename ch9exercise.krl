@@ -18,7 +18,7 @@ ruleset ch9exercise {
 		pre {
 			checkin_map = event:attr("checkin").decode();
 			venue = checkin_map.pick("$..venue");
-			venue_name = checkin_map.pick("$.venue.name");
+			venue_name = checkin_map.pick("$.venue[0].name");
 			/*ent:city = event:attr("city");
 			ent:shout = event:attr("shout");
 			ent:createdAt = event:attr("createdAt");*/
