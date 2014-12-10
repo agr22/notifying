@@ -16,7 +16,7 @@ ruleset ch9exercise {
 	rule process_fs_checkin {
 		select when foursquare checkin
 		pre {
-			checkin_map = event:attr("checkin").decode();
+			checkin_map = event:attr("$.checkin").decode();
 			venue = checkin_map.pick("$..venue");
 			venue_name = checkin_map.pick("$.venue[0].name");
 			/*ent:city = event:attr("city");
