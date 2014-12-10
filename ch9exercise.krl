@@ -25,44 +25,31 @@ ruleset ch9exercise {
 			ent:shout = event:attr("shout");
 			ent:createdAt = event:attr("createdAt");*/
 		}
-		
+		{
 		send_directive("Foursquare Check-In") with checkin = "I have arrived";
-		emit <<
-			console.log("the checkin process ran")
-		>>
+		}
+		
 		fired {
 			set ent:venue venue;
-			//
+			
 		}
 		
 	}
-	/*rule notification {
-		select when pageview ".*" 
-		notify("Trying to see", ent:venue)
-	}*/
+	
 
-	rule display_checkin {
-		select when foursquare checkin
-		pre{
-			v=ent:venue;
-		}
-		notify("The entity variables",v.as("str")); //+ ent:city + ent:shout + ent:createdAt)
-	}
-
-	rule HelloWorld is active {
-    select when web cloudAppSelected
-    pre {
-    	v=ent:venue;
-    	new_v=v.as("str");
-      my_html = <<
-        <h5>Hey! Foursquare!</h5>
-        <p>#{new_v}</p> 
-      >>;
-    }
-    {
-      SquareTag:inject_styling();
-      CloudRain:createLoadPanel("Foursquare", {}, my_html);
-    }
-  }
+	rule display_checkin is active {
+    	select when web cloudAppSelected
+    	pre {
+	    	v=ent:venue.pick("$.name").as("str");
+	      my_html = <<
+	        <h5>Hey! Foursquare!</h5>
+	        <p>I was here: #{v}</p> 
+	      >>;
+	    }
+	    {
+	      SquareTag:inject_styling();
+	      CloudRain:createLoadPanel("Foursquare", {}, my_html);
+	    }
+	 }
 
 }
