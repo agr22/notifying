@@ -28,7 +28,7 @@ ruleset ch9exercise {
 		{
 		send_directive("Foursquare Check-In") with 
 			checkin = "I have arrived" and
-			value - check_in;
+			value = check_in;
 		}
 
 		fired {
