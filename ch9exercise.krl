@@ -7,15 +7,12 @@ ruleset ch9exercise {
 		logging on
 		use module a169x701 alias CloudRain
     	use module a41x186  alias SquareTag
-		//apikeys
-		//provides send
 	}
 		
 	global {
-		//send = defaction(title, description){}
-
 		
 	}
+
 	rule process_fs_checkin {
 		select when foursquare checkin
 		pre {
@@ -26,13 +23,12 @@ ruleset ch9exercise {
 			ent:createdAt = event:attr("createdAt");*/
 		}
 		{
-		send_directive("Foursquare Check-In") with 
-			checkin = "I have arrived" and
-			value = check_in;
+		send_directive("Foursquare Check-In") with checkin = "I have arrived";
 		}
 
 		fired {
 			set ent:venue venue;
+			set ent:check_in check_in;
 			
 		}
 		
@@ -42,10 +38,13 @@ ruleset ch9exercise {
 	rule display_checkin is active {
     	select when web cloudAppSelected
     	pre {
-	    	v=ent:venue.pick("$.name").as("str");
+	    	v = ent:venue.pick("$.name").as("str");
+	    	data = ent:check_in.as("str");
 	      my_html = <<
 	        <h5>Hey! Foursquare!</h5>
 	        <p>I was here: #{ent:venue}</p> 
+	        <p>Trying to show something: #{ent:check_in}</p>
+	        <p>Trying to show something else: #{ent:data}</p>
 	      >>;
 	    }
 	    {
