@@ -16,8 +16,9 @@ ruleset ch9exercise {
 	rule process_fs_checkin {
 		select when foursquare checkin
 		pre {
-			check_in = event:attr("checkin").decode();
-			venue = checkin.pick("$..venue");
+			checkin_map = event:attr("checkin").decode();
+			venue = checkin_map.pick("$..venue");
+			venue_name = checkin_map.pick("$.venue.name");
 			/*ent:city = event:attr("city");
 			ent:shout = event:attr("shout");
 			ent:createdAt = event:attr("createdAt");*/
@@ -28,7 +29,8 @@ ruleset ch9exercise {
 
 		fired {
 			set ent:venue venue;
-			set ent:check_in check_in;
+			set ent:checkin_map checkin_map;
+			set ent:venue_name venue_name;
 			
 		}
 		
@@ -39,12 +41,14 @@ ruleset ch9exercise {
     	select when web cloudAppSelected
     	pre {
 	    	v = ent:venue.pick("$.name").as("str");
-	    	data = ent:check_in.as("str");
+	    	data = ent:checkin_map.as("str");
+	    	//venue_name = ent:venue_name;
 	      my_html = <<
 	        <h5>Hey! Foursquare!</h5>
 	        <p>I was here: #{ent:venue}</p> 
-	        <p>Trying to show something: #{ent:check_in}</p>
+	        <p>Trying to show something: #{ent:checkin_map}</p>
 	        <p>Trying to show something else: #{ent:data}</p>
+	        <p>Should be venue name: #{ent:venue_name}</p>
 	      >>;
 	    }
 	    {
