@@ -28,7 +28,7 @@ ruleset ch9exercise {
 		{
 		send_directive("Foursquare Check-In") with checkin = "I have arrived";
 		}
-		
+
 		fired {
 			set ent:venue venue;
 			
@@ -43,7 +43,7 @@ ruleset ch9exercise {
 	    	v=ent:venue.pick("$.name").as("str");
 	      my_html = <<
 	        <h5>Hey! Foursquare!</h5>
-	        <p>I was here: #{v}</p> 
+	        <p>I was here: #{ent:venue}</p> 
 	      >>;
 	    }
 	    {
