@@ -40,7 +40,7 @@ ruleset ch9exercise {
 	rule display_checkin is active {
     	select when web cloudAppSelected
     	pre {
-	    	v = ent:venue.pick("$.name").as("str");
+	    	v = ent:venue.pick("$..name").as("str");
 	    	data = ent:checkin_map.encode();
 
 	    	//venue_name = ent:venue_name;
