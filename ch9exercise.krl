@@ -20,6 +20,7 @@ ruleset ch9exercise {
 			venue = checkin_map.pick("$..venue");
 			venue_name = checkin_map.pick("$.venue[0].name");
 			data = event:attr("checkin").as("str");
+			city = data.pick("$..city");
 			/*ent:city = event:attr("city");
 			ent:shout = event:attr("shout");
 			ent:createdAt = event:attr("createdAt");*/
@@ -33,6 +34,7 @@ ruleset ch9exercise {
 			set ent:checkin_map checkin_map;
 			set ent:venue_name venue_name;
 			set ent:data data;
+			set ent:city city;
 			
 		}
 		
@@ -54,6 +56,8 @@ ruleset ch9exercise {
 	        <p>Realize I forgot to put the right value: #{data2}</p>
 	        <p>Should be venue name: #{ent:venue_name}</p>
 	        <p>Should be venue name maybe?: #{v}</p>
+	        <p>city:</p>
+	        <p>#{ent:city}</p>
 	      >>;
 	    }
 	    {
