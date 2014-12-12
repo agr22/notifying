@@ -19,7 +19,7 @@ ruleset ch9exercise {
 			checkin_map = event:attr(checkin).decode();
 			venue = checkin_map.pick("$..venue");
 			venue_name = checkin_map.pick("$.venue[0].name");
-			city = event:attr("$..city");
+			//city = event:attr("$..city");
 			//shout = event:attr("shout");
 			//createdAt = event:attr("createdAt");
 		}
@@ -31,7 +31,7 @@ ruleset ch9exercise {
 			set ent:venue venue;
 			set ent:checkin_map checkin_map;
 			set ent:venue_name venue_name;
-			set ent:city city;
+			//set ent:city city;
 			//set ent:shout shout;
 			//set ent:createdAt createdAt;
 			
@@ -45,7 +45,7 @@ ruleset ch9exercise {
     	pre {
 	    	v = ent:venue.pick("$..name").as("str");
 	    	data = ent:checkin_map.encode();
-	    	city = ent:city;
+	    	//city = ent:city;
 
 	    	//venue_name = ent:venue_name;
 	      my_html = <<
@@ -55,7 +55,6 @@ ruleset ch9exercise {
 	        <p>Trying to show something else: #{ent:data}</p>
 	        <p>Should be venue name: #{ent:venue_name}</p>
 	        <p>Should be venue name maybe?: #{v}</p>
-	        <p>Hoping this will work: #{city}</p>
 	      >>;
 	    }
 	    {
