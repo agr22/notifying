@@ -26,10 +26,7 @@ ruleset ch9exercise {
 			ent:createdAt = event:attr("createdAt");*/
 		}
 		{
-		send_directive("Foursquare Check-In") with checkin = "I have arrived" and
-
-		event = "value";
-
+		send_directive("Foursquare Check-In") with checkin = checkin_map;
 		}
 
 		fired {
