@@ -28,7 +28,7 @@ ruleset ch9exercise {
 		{
 		send_directive("Foursquare Check-In") with checkin = "I have arrived" and
 
-		event = event:attr("checkin");
+		event = "value";
 
 		}
 
