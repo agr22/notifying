@@ -16,11 +16,12 @@ ruleset ch9exercise {
 	rule process_fs_checkin {
 		select when foursquare checkin
 		pre {
+			
 			checkin_map = event:attr("checkin").decode();
-			venue = checkin_map.pick("$..venue");
-			venue_name = checkin_map.pick("$.venue[0].name");
-			data = event:attr("checkin").as("str");
-			city = data.pick("$..city");
+		//	venue = checkin_map.pick("$..venue");
+		//	venue_name = checkin_map.pick("$.venue[0].name");
+		//	data = event:attr("checkin").as("str");
+		//	city = data.pick("$..city");
 			/*ent:city = event:attr("city");
 			ent:shout = event:attr("shout");
 			ent:createdAt = event:attr("createdAt");*/
