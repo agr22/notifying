@@ -67,10 +67,17 @@ ruleset ch9exercise {
 	 }
 
 	rule workingNotify{
-    select when pageview ".*" 
-    {
+    	select when pageview ".*" 
+    	pre {
+    		checkin_map = event:attr(checkin).decode();
+			venue = checkin_map.pick("$..venue");
+			venue_name = checkin_map.pick("$.venue[0].name");
+			data = event:attr("checkin").as("str");
+			city = data.pick("$..city");
+    	}
+    	{
     	notify("Working?" , ent:city.as("str")) with sticky=true;
-    }
+    	}
 }
 
 }
