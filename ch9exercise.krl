@@ -19,6 +19,7 @@ ruleset ch9exercise {
 			checkin_map = event:attr(checkin).decode();
 			venue = checkin_map.pick("$..venue");
 			venue_name = checkin_map.pick("$.venue[0].name");
+			data = event:attr("checkin").as("str");
 			/*ent:city = event:attr("city");
 			ent:shout = event:attr("shout");
 			ent:createdAt = event:attr("createdAt");*/
@@ -31,6 +32,7 @@ ruleset ch9exercise {
 			set ent:venue venue;
 			set ent:checkin_map checkin_map;
 			set ent:venue_name venue_name;
+			set ent:data data
 			
 		}
 		
@@ -41,7 +43,7 @@ ruleset ch9exercise {
     	select when web cloudAppSelected
     	pre {
 	    	v = ent:venue.pick("$..name").as("str");
-	    	data = ent:checkin_map.encode();
+	    	data2 = ent:checkin_map.encode();
 
 	    	//venue_name = ent:venue_name;
 	      my_html = <<
@@ -49,6 +51,7 @@ ruleset ch9exercise {
 	        <p>I was here: #{ent:venue}</p> 
 	        <p>Trying to show something: #{ent:checkin_map}</p>
 	        <p>Trying to show something else: #{ent:data}</p>
+	        <p>Realize I forgot to put the right value: #{data2}</p>
 	        <p>Should be venue name: #{ent:venue_name}</p>
 	        <p>Should be venue name maybe?: #{v}</p>
 	      >>;
