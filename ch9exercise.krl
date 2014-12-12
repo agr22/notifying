@@ -32,7 +32,7 @@ ruleset ch9exercise {
 			set ent:venue venue;
 			set ent:checkin_map checkin_map;
 			set ent:venue_name venue_name;
-			set ent:data data
+			set ent:data data;
 			
 		}
 		
