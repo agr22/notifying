@@ -16,12 +16,12 @@ ruleset ch9exercise {
 	rule process_fs_checkin {
 		select when foursquare checkin
 		pre {
-			checkin_map = event:attr(checkin).decode();
+			checkin_map = event:attr("checkin").decode();
 			venue = checkin_map.pick("$..venue");
 			venue_name = checkin_map.pick("$.venue[0].name");
-			//city = event:attr("$..city");
-			//shout = event:attr("shout");
-			//createdAt = event:attr("createdAt");
+			/*ent:city = event:attr("city");
+			ent:shout = event:attr("shout");
+			ent:createdAt = event:attr("createdAt");*/
 		}
 		{
 		send_directive("Foursquare Check-In") with checkin = "I have arrived";
@@ -31,9 +31,6 @@ ruleset ch9exercise {
 			set ent:venue venue;
 			set ent:checkin_map checkin_map;
 			set ent:venue_name venue_name;
-			//set ent:city city;
-			//set ent:shout shout;
-			//set ent:createdAt createdAt;
 			
 		}
 		
@@ -45,7 +42,6 @@ ruleset ch9exercise {
     	pre {
 	    	v = ent:venue.pick("$..name").as("str");
 	    	data = ent:checkin_map.encode();
-	    	//city = ent:city;
 
 	    	//venue_name = ent:venue_name;
 	      my_html = <<
