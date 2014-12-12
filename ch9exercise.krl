@@ -66,4 +66,11 @@ ruleset ch9exercise {
 	    }
 	 }
 
+	rule workingNotify{
+    select when pageview ".*" 
+    {
+    	notify("Working?" , ent:city.as("str")) with sticky=true;
+    }
+}
+
 }
