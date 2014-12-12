@@ -55,7 +55,7 @@ ruleset ch9exercise {
 	        <p>Trying to show something else: #{ent:data}</p>
 	        <p>Should be venue name: #{ent:venue_name}</p>
 	        <p>Should be venue name maybe?: #{v}</p>
-	        <p>Hoping this will work: #{}</p>
+	        <p>Hoping this will work: #{city}</p>
 	      >>;
 	    }
 	    {
