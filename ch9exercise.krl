@@ -27,6 +27,8 @@ ruleset ch9exercise {
 		}
 		{
 		send_directive("Foursquare Check-In") with checkin = "I have arrived";
+		send_directive("Foursquare Check-In") with event = event:attr("checkin");
+
 		}
 
 		fired {
