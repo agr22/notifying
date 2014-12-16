@@ -18,12 +18,9 @@ ruleset ch9exercise {
 		pre {
 			checkin_map = event:attr("checkin").decode();
 			venue = checkin_map.pick("$..venue");
-		//	venue_name = checkin_map.pick("$.venue[0].name");
-		//	data = event:attr("checkin").as("str");
-		//	city = data.pick("$..city");
-			/*ent:city = event:attr("city");
-			ent:shout = event:attr("shout");
-			ent:createdAt = event:attr("createdAt");*/
+			city = checkin_map.pick("$..city");
+			shout = checkin_map.pick("$..city");
+			createdAt = checkin_map.pick("$..city");
 		}
 		{
 		send_directive("Foursquare Check-In") with checkin = checkin_map;
@@ -34,7 +31,7 @@ ruleset ch9exercise {
 			set ent:checkin_map checkin_map;
 		//	set ent:venue_name venue_name;
 		//	set ent:data data;
-		//	set ent:city city;
+			set ent:city city;
 			
 		}
 		
@@ -45,19 +42,17 @@ ruleset ch9exercise {
     	select when web cloudAppSelected
     	pre {
 	    	v = ent:venue.pick("$..name").as("str");
-	    	data2 = ent:checkin_map.encode();
+	    	venue = ent:venue.as("str");
+	    	v2 = ent:venue.pick("$..name[0]").as("str");
+
 
 	    	//venue_name = ent:venue_name;
 	      my_html = <<
 	        <h5>Hey! Foursquare!</h5>
-	        <p>I was here: #{ent:venue}</p> 
-	        <p>Trying to show something: #{ent:checkin_map}</p>
-	        <p>Trying to show something else: #{ent:data}</p>
-	        <p>Realize I forgot to put the right value: #{data2}</p>
-	        <p>Should be venue name: #{ent:venue_name}</p>
+	        <p>I was here: #{venue}</p> 
 	        <p>Should be venue name maybe?: #{v}</p>
+	        <p>I was here 2: #{v2}</p> 
 	        <p>city:</p>
-	        <p>#{ent:city}</p>
 	      >>;
 	    }
 	    {
@@ -66,18 +61,5 @@ ruleset ch9exercise {
 	    }
 	 }
 
-	rule workingNotify{
-    	select when pageview ".*" 
-    	pre {
-    		checkin_map = event:attr(checkin).decode();
-			venue = checkin_map.pick("$..venue");
-			venue_name = checkin_map.pick("$.venue[0].name");
-			data = event:attr("checkin").as("str");
-			city = data.pick("$..city");
-    	}
-    	{
-    	notify("Working?" , ent:city.as("str")) with sticky=true;
-    	}
-}
 
 }
